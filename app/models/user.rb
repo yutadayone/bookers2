@@ -13,12 +13,12 @@ class User < ApplicationRecord
           validates :name, uniqueness: true
           validates :introduction, length: { maximum: 50 }
 
-def self.guest
+  def self.guest
     find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
     end
-end
+  end
 
   def get_profile_image(width, height)
     unless profile_image.attached?
